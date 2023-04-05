@@ -10,5 +10,5 @@ RewriteRule ^(.*)$ $1.php [L]
 RewriteCond %{THE_REQUEST} \.php
 RewriteRule ^(.+)\.php$ /$1 [R=301,L]
 
-
+# Redirect rules for easier navigation
 RewriteRule ^bio$ /intro/bio_of_idol_variable [L,R=301]
