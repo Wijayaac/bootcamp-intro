@@ -7,8 +7,9 @@ This repository contains resources and exercises for the Introduction to PHP boo
 - Arrays
 - Object-oriented programming
 - MySQL database integration
-- Prerequisites
-- Before starting this bootcamp, you should have a basic understanding of programming concepts and have some experience with HTML and CSS. Additionally, you will need:
+
+## Prerequisites
+Before starting this bootcamp, you should have a basic understanding of programming concepts and have some experience with HTML and CSS. Additionally, you will need:
 
 - A web server installed on your local machine (such as XAMPP, WAMP, or MAMP)
 - A code editor (such as Visual Studio Code, Sublime Text, or Atom)
