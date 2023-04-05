@@ -1,0 +1,14 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect requests to add the .php extension back in (if it's missing)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Redirect requests for the .php extension to the extensionless URL
+RewriteCond %{THE_REQUEST} \.php
+RewriteRule ^(.+)\.php$ /$1 [R=301,L]
+
+
+RewriteRule ^bio$ /intro/bio_of_idol_variable [L,R=301]
