@@ -87,15 +87,15 @@ if ($anggrekStreetLength && $lotusStreetLength && $kambojaStreetLength) {
         </div>
         <div>
             <label for="anggrek_street">Anggrek Street:</label>
-            <input type="number" step="any" name="anggrek_street" id="anggrek_street" value="<?= isset($_GET['anggrek_street']) ? $_GET['anggrek_street'] : '' ?>" required>
+            <input type="number" step="any" name="anggrek_street" id="anggrek_street" value="<?= $_GET['anggrek_street'] ?? '' ?>" required>
         </div>
         <div>
             <label for="kamboja_street">Kamboja Street:</label>
-            <input type="number" step="any" name="kamboja_street" id="kamboja_street" value="<?= isset($_GET['kamboja_street']) ? $_GET['kamboja_street'] : '' ?>" required>
+            <input type="number" step="any" name="kamboja_street" id="kamboja_street" value="<?= $_GET['kamboja_street'] ?? '' ?>" required>
         </div>
         <div>
             <label for="lotus_street">Lotus Street:</label>
-            <input type="number" step="any" name="lotus_street" id="lotus_street" value="<?= isset($_GET['lotus_street']) ? $_GET['lotus_street'] : '' ?>" required>
+            <input type="number" step="any" name="lotus_street" id="lotus_street" value="<?= $_GET['lotus_street'] ?? '' ?>" required>
         </div>
         <div>
             <label for="is_cash_available">Cash ready?:</label>

@@ -22,16 +22,16 @@ $quotes = [
     ],
 ];
 
-$author = isset($_GET['author']) ?? "";
-$quote = isset($_GET['quote']) ?? "";
-$myQuote = isset($_GET['my_quote']) ?? false;
+$author = $_GET['author'] ?? "";
+$quote = $_GET['quote'] ?? "";
+$myQuote = $_GET['my_quote'] ?? false;
 
 $newQuote = [];
 $randomAuthor = rand(0, 4);
-
-if ($author !== "" && $quote !== "") {
+if ($author && $quote) {
     $newQuote["author"] = $author;
     $newQuote["quote"] = $quote;
+
     array_push($quotes, $newQuote);
 
     if ($myQuote) {
@@ -54,28 +54,28 @@ $selectedAuthor = $quotes[$randomAuthor];
 </head>
 
 <body>
-    <form action="" method="GET">
-
-        <div>
-            <label for="author">Author</label>
-            <input type="text" name="author" require id="author">
-        </div>
-        <div>
-            <label for="quote">Quote</label>
-            <input type="text" name="quote" require id="quote">
-        </div>
-        <div>
-            <label for="my_quote">Show my Quote</label>
-            <input type="checkbox" name="my_quote" id="my_quote">
-        </div>
-        <button type="submit">Add Quote</button>
-    </form>
 
     <h1>Quote of the day</h1>
     <pre>Press F5 to randomize the author</pre>
 
     <h2 style="max-width: 450px;">"<?= $selectedAuthor["quote"] ?>" - <?= $selectedAuthor['author'] ?></h2>
 
+    <form action="" method="GET">
+
+        <div>
+            <label for="author">Author</label>
+            <input type="text" name="author" require id="author" value="<?= $_GET['author'] ?? '' ?>">
+        </div>
+        <div>
+            <label for="quote">Quote</label>
+            <input type="text" name="quote" require id="quote" value="<?= $_GET['quote'] ?? '' ?>">
+        </div>
+        <div>
+            <label for="my_quote">Show my Quote</label>
+            <input type="checkbox" name="my_quote" id="my_quote" <?= $myQuote ? "checked" : "" ?>>
+        </div>
+        <button type="submit">Add Quote</button>
+    </form>
 </body>
 
 </html>
