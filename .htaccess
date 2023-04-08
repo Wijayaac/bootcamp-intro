@@ -12,5 +12,4 @@ RewriteRule ^(.+)\.php$ /$1 [R=301,L]
 
 # Redirect rules for easier navigation
 RewriteRule ^bio$ /intro/bio_of_idol_variable [L,R=301]
-RewriteRule ^dyn$ /practice/cost_calculation [L,R=301]
-RewriteRule ^sta$ /practice/dynamic_cost_calculation [L,R=301]
+RewriteRule ^dyn$ /practice/dynamic_cost_calculation [L,R=301]
