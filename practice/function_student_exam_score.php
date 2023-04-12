@@ -63,9 +63,9 @@ function get_final_score(int $examScore, int $quizScore): string
 
     if ($examScore > 80 && $quizScore > 82) {
         $statusMessage = "Passed!";
-    } elseif ($examScore > 80) {
+    } elseif ($examScore >= 80 && $quizScore <= 82) {
         $statusMessage = "Not passed, take a new quiz!";
-    } elseif ($quizScore > 82) {
+    } elseif ($quizScore >= 82 && $examScore <= 80) {
         $statusMessage = "Not passed, take the remedial exam!";
     }
     return $statusMessage;
