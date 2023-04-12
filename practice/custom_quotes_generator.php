@@ -63,7 +63,6 @@ $selectedAuthor = $quotes[$randomAuthor];
     <h2 style="max-width: 450px;">"<?= $selectedAuthor["quote"] ?>" - <?= $selectedAuthor['author'] ?></h2>
 
     <form action="" method="GET">
-
         <div>
             <label for="author">Author</label>
             <input type="text" name="author" require id="author" value="<?= $_GET['author'] ?? '' ?>">
