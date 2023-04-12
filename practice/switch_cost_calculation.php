@@ -20,9 +20,6 @@ switch ($unitLength) {
         $kambojaStreetLength /= 100;
         $lotusStreetLength /= 100;
         break;
-
-    default:
-        break;
 }
 
 // count the total street

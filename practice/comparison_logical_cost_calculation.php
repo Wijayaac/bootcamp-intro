@@ -4,7 +4,7 @@ $anggrekStreetLength = $_GET['anggrek_street'] ?? 0;
 $kambojaStreetLength = $_GET['kamboja_street'] ?? 0;
 $lotusStreetLength = $_GET['lotus_street'] ?? 0;
 
-$isCashReady = isset($_GET['is_cash_available']) ? true : null;
+$isCashReady = isset($_GET['is_cash_available']) ? isset($_GET['is_cash_available']) : null;
 $cashMessage = "Waiting for calculation";
 $projectStatus = "Will be postponed, until funds are available";
 $cashMessageColor = "normal";
@@ -42,7 +42,7 @@ if ($anggrekStreetLength && $lotusStreetLength && $kambojaStreetLength) {
     if ($totalCost >= $maximumCostAvailable  && $totalCost >= ($maximumCostAvailable * 2)) {
         $cashMessage = "Lack of funds - apply for financial assistance to the local government.";
         $cashMessageColor = "red";
-        $isCashReady = false; // don't know if it's needed
+        $isCashReady = false;
     } elseif ($totalCost >= $maximumCostAvailable) {
         $cashMessage = "Lack of funds - to cover the lack of funds, a fund-raising bazaar was held.";
         $cashMessageColor = "red";

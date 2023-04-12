@@ -27,17 +27,19 @@ $quote = $_GET['quote'] ?? "";
 $myQuote = $_GET['my_quote'] ?? false;
 
 $newQuote = [];
+$selectedAuthor = [];
 $randomAuthor = rand(0, 4);
-if ($author && $quote) {
+if ($author && $quote && !$myQuote) {
     $newQuote["author"] = $author;
     $newQuote["quote"] = $quote;
 
     array_push($quotes, $newQuote);
 
-    if ($myQuote) {
-        $randomAuthor = count($quotes) - 1;
-    } else {
+    if (!$myQuote) {
         $randomAuthor = rand(0, count($quotes) - 1);
+    } else {
+        $selectedAuthor["author"] = $author;
+        $selectedAuthor["quote"] = $quote;
     }
 }
 
