@@ -68,7 +68,6 @@ function get_final_score(int $examScore, int $quizScore): string
     } elseif ($quizScore > 82) {
         $statusMessage = "Not passed, take the remedial exam!";
     }
-
     return $statusMessage;
 }
 ?>
