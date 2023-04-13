@@ -1,8 +1,11 @@
 <?php
 
-require "./class/Person.php";
+require_once "./class/Person.php";
+require_once "./class/MassIndex.php";
+require_once "./class/BodyMassIndex.php";
+require_once "./class/RelativeMassIndex.php";
+require_once "./helper/get_input.php";
 
-$objPerson = new Person();
 
 // GET form value
 $namePerson = get_input("name", "");
@@ -12,26 +15,22 @@ $heightPerson = get_input("height", 0);
 $weightPerson = get_input("weight", 0);
 $waistPerson = get_input("waist_size", 0);
 
-// helper function
-function get_input(string $inputName, $defaultValue)
-{
-    $result = $defaultValue;
-
-    if (isset($_GET[$inputName]) && $_GET[$inputName] !== "") {
-        $result = $_GET[$inputName];
-    }
-
-    return $result;
-}
+// person assigment propertie through methods
+$objPerson = new Person($namePerson, $agePerson, $genderPerson);
+$objPerson->bodyFact($heightPerson, $weightPerson, $waistPerson);
 
 // calculation
 // BMI
-$scoreBMI = 0;
-$categoryBMI = "";
+$bmiPerson = new BodyMassIndex();
+$bmiPerson->calculate($objPerson->height, $objPerson->weight);
+$scoreBMI = $bmiPerson->getScore();
+$categoryBMI = $bmiPerson->getCategory();
 
 // RFM
-$scoreRFM = 0;
-$categoryRFM = "";
+$rfmPerson = new RelativeMass();
+$rfmPerson->calculate($objPerson->height, $objPerson->waistSize, $objPerson->gender);
+$scoreRFM = $rfmPerson->getScore();
+$categoryRFM = $rfmPerson->getCategory();
 
 ?>
 
@@ -61,16 +60,16 @@ $categoryRFM = "";
             </div>
             <div class="field">
                 <div class="radio">
-                    <input type="radio" name="gender" id="male">
+                    <input type="radio" name="gender" value="m" id="male">
                     <label for="male">Male</label>
                 </div>
                 <div class="radio">
-                    <input type="radio" name="gender" id="female">
+                    <input type="radio" name="gender" value="f" id="female">
                     <label for="female">Female</label>
                 </div>
             </div>
             <div class="field">
-                <label for="height">Height</label>
+                <label for="height">Height(CM)</label>
                 <input type="number" name="height" id="height">
             </div>
             <div class="field">
@@ -86,14 +85,11 @@ $categoryRFM = "";
 
         <p>User details</p>
         <ul class="detail">
-            <li>Name : <?= $namePerson ?></li>
-            <li>Age : <?= $agePerson ?></li>
-            <li>Gender : <?= $genderPerson ?></li>
-            <li>Height : <?= $heightPerson ?></li>
-            <li>Weight : <?= $weightPerson ?></li>
-            <li>Waist Size : <?= $waistPerson ?></li>
-            <li>BMI Score : <?= $scoreBMI ?>, belongs to the category <?= $categoryBMI ?></li>
-            <li>RFM Score : <?= $scoreRFM ?>, belongs to the category <?= $categoryRFM ?></li>
+            <?php foreach ($objPerson as $key => $value) : ?>
+                <li><?= $key ?> : <?= $value ?></li>
+            <?php endforeach ?>
+            <li>BMI Score : <?= number_format($scoreBMI, 2) ?>, belongs to the category <?= $categoryBMI ?></li>
+            <li>RFM Score : <?= number_format($scoreRFM, 2) ?>%, belongs to the category <?= $categoryRFM ?></li>
         </ul>
     </div>
 </body>
