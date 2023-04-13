@@ -9,7 +9,7 @@ class Person
     public float $weight = 0;
     public float $waistSize = 0;
 
-    public function bio(string $name, int $age, string $gender): void
+    public function __construct(string $name, string $age, string $gender)
     {
         $this->name = $name;
         $this->age = $age;
