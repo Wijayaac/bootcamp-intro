@@ -6,10 +6,12 @@ class RelativeMass extends MassIndex
     public function calculate(float $height, float $waistSize, string $gender): void
     {
         $calculateRFM = 0;
-        if ($gender === "m") {
-            $calculateRFM = 64 - (20 * ($height / $waistSize));
-        } else {
-            $calculateRFM = 76 - (20 * ($height / $waistSize));
+        if ($height != 0 || $waistSize != 0) {
+            if ($gender === "m") {
+                $calculateRFM = 64 - (20 * ($height / $waistSize));
+            } else {
+                $calculateRFM = 76 - (20 * ($height / $waistSize));
+            }
         }
 
         $this->score = $calculateRFM;
@@ -19,40 +21,28 @@ class RelativeMass extends MassIndex
     {
         $categoryStatus = "";
         if ($gender === "f") {
-            switch ($this->score) {
-                case $this->score >= 32:
-                    $categoryStatus = "Obese";
-                    break;
-                case $this->score >= 10 && $this->score <= 13:
-                    $categoryStatus = "Essential fat";
-                    break;
-                case $this->score >= 14 && $this->score <= 20:
-                    $categoryStatus = "Atheletes";
-                    break;
-                case $this->score >= 21 && $this->score <= 24:
-                    $categoryStatus = "Fitness";
-                    break;
-                case $this->score >= 25 && $this->score <= 31:
-                    $categoryStatus = "Average";
-                    break;
+            if ($this->score >= 32) {
+                $categoryStatus = "Obese";
+            } elseif ($this->score >= 10 && $this->score <= 13) {
+                $categoryStatus = "Essential fat";
+            } elseif ($this->score >= 14 && $this->score <= 20) {
+                $categoryStatus = "Atheletes";
+            } elseif ($this->score >= 21 && $this->score <= 24) {
+                $categoryStatus = "Fitness";
+            } elseif ($this->score >= 25 && $this->score <= 31) {
+                $categoryStatus = "Average";
             }
         } else {
-            switch ($this->score) {
-                case $this->score >= 25:
-                    $categoryStatus = "Obese";
-                    break;
-                case $this->score >= 2 && $this->score <= 5:
-                    $categoryStatus = "Essential fat";
-                    break;
-                case $this->score >= 6 && $this->score <= 13:
-                    $categoryStatus = "Atheletes";
-                    break;
-                case $this->score >= 14 && $this->score <= 17:
-                    $categoryStatus = "Fitness";
-                    break;
-                case $this->score >= 18 && $this->score <= 24:
-                    $categoryStatus = "Average";
-                    break;
+            if ($this->score >= 25) {
+                $categoryStatus = "Obese";
+            } elseif ($this->score >= 2 && $this->score <= 5) {
+                $categoryStatus = "Essential fat";
+            } elseif ($this->score >= 6 && $this->score <= 13) {
+                $categoryStatus = "Atheletes";
+            } elseif ($this->score >= 14 && $this->score <= 17) {
+                $categoryStatus = "Fitness";
+            } elseif ($this->score >= 18 && $this->score <= 24) {
+                $categoryStatus = "Average";
             }
         }
 
