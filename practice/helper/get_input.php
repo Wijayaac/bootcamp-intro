@@ -1,6 +1,6 @@
 <?php
 // helper function
-function get_input(string $inputName, $defaultValue)
+function get_input(string $inputName, $defaultValue): string
 {
     $result = $defaultValue;
 

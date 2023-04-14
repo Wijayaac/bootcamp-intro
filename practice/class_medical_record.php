@@ -20,13 +20,13 @@ $objPerson = new Person($namePerson, $agePerson, $genderPerson);
 $objPerson->bodyFact($heightPerson, $weightPerson, $waistPerson);
 
 // calculation
-// BMI
+// BMI in here the scope is public
 $bmiPerson = new BodyMassIndex();
 $bmiPerson->calculate($objPerson->height, $objPerson->weight);
 $scoreBMI = $bmiPerson->getScore();
 $categoryBMI = $bmiPerson->getCategory();
 
-// RFM
+// RFM in here the scope is public
 $rfmPerson = new RelativeMass();
 $rfmPerson->calculate($objPerson->height, $objPerson->waistSize, $objPerson->gender);
 $scoreRFM = $rfmPerson->getScore();
